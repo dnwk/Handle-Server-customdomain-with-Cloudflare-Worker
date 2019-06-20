@@ -36,6 +36,6 @@ async function handleRequest(request) {
   if(destinationurl){ 
     return Response.redirect(destinationurl, 301)
   }else{
-    return new Response(s, { status: 200 })
+    return new Response("error", { status: 500 })
   }
 }
