@@ -1,1 +1,2 @@
-README.md
+This is a problem that use Cloudflare's serverless platform "worker" to process Handle.net request under custom domain. 
+The script will query hdl.handle.net API and perform redirect when URL is found.
