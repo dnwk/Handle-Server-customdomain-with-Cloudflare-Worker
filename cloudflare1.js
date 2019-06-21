@@ -4,6 +4,11 @@ addEventListener('fetch', event => {
 })
 
 async function handleRequest(request) {
+  //config your handle prefix, if you do not intent to use it in your custom domain. 
+  //e.g. With prefix  xxx.edu/prefix/handle
+  // without prefix   xxx.edu/handle
+  // leave prefix empty if the permanent URL you use aleady includes prefix
+  const prefix = "10349"
   const urlObject = new URL(request.url)
   const context = {
     host: urlObject.host,
@@ -14,7 +19,7 @@ async function handleRequest(request) {
  let response
   try {
     response = await Promise.race([
-      fetch('https://hdl.handle.net/api/handles/10349' + context.request_uri, {
+      fetch('https://hdl.handle.net/api/handles/' + prefix + context.request_uri, {
         method: 'GET',
         headers: {
           'User-Agent': 'cloudflare-service-worker/0.0.1'
