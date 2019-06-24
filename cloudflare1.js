@@ -27,13 +27,13 @@ async function handleRequest(request) {
       })
     ])
   } catch (error) {
-    return [ new Response("error", { status: 500 })]
+    return [ new Response("500/Handle Server error", { status: 500 })]
   }
   //parsing json and location type URL
    data = JSON.parse(await response.text())
    for (k in data.values){
      if (data.values[k].type=='URL'){
-     destinationurl=data.values[k].data.value
+     var destinationurl=data.values[k].data.value
      }
    }
 
@@ -41,6 +41,6 @@ async function handleRequest(request) {
   if(destinationurl){ 
     return Response.redirect(destinationurl, 301)
   }else{
-    return new Response("error", { status: 500 })
+    return new Response("404/Handle Not Found", { status: 404 })
   }
 }
