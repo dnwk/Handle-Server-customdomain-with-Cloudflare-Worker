@@ -39,7 +39,7 @@ async function handleRequest(request) {
 
   // Send redirection response
   if(destinationurl){ 
-    return Response.redirect(destinationurl, 301)
+    return Response.redirect(destinationurl.trim(), 301)
   }else{
     return new Response("404/Handle Not Found", { status: 404 })
   }
